@@ -4,7 +4,7 @@ import openai
 openai.api_key = ""
 openai.api_base = "https://api.pawan.krd/cosmosrp/v1"
 
-AI_MODEL = "cosmosrp-8k"
+AI_MODEL = "pai-001"
 
 
 def chat_with_gpt(prompt):
