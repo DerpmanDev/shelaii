@@ -2,7 +2,8 @@
 
 This is a terminal-based application made with Python that lets you interact with AI models in your console. The project uses a custom API by [@PawanOsman](https://github.com/PawanOsman/ChatGPT) to access their AI models, such as `cosmosrp-8k`, to respond to user queries.
 
-![image](https://github.com/user-attachments/assets/0dc980ac-1021-43b7-a5c6-41ec40260856)
+<img src="https://github.com/user-attachments/assets/75a16460-80cd-4edd-9aee-adf01bff6a40" width="500">
+
 
 
 ## Features
