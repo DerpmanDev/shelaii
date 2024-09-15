@@ -42,11 +42,9 @@ def main():
 
     # Title wiht a box around it
     title = Text.from_markup(
-        "[bold magenta]Welcome to Shelaii![/bold magenta]")
-    title.stylize("bold underline", 0, len(title))
-
+        f'[bold underline magenta]Welcome to Shelaii![/bold underline magenta]\nType "help" for a list of commands.')
     title_panel = Panel(title,
-                        border_style="bold yellow",
+                        border_style="bold purple",
                         title_align="center",
                         expand=False)
 
@@ -71,11 +69,29 @@ def main():
                 console.print("[bold red]Goodbye![/bold red]")
                 break
 
-            console.print(
-                f"[bold yellow]{ai_name} is thinking...[/bold yellow]")
-            response = chat_with_gpt(prompt)
-            markdown = Markdown(response)
-            console.print(markdown)
+            if prompt.lower().startswith("chgname "):
+                new_name = prompt[8:].strip()
+                save_ai_name(new_name)
+                console.print(f'[blue]Updated name to[/blue] [yellow]"{new_name}!"[/yellow]')
+                ai_name = load_ai_name()
+                console.print(f"[bold green]{ai_name}:[/bold green] [yellow]How can I help you today?[/yellow]")
+                continue
+
+            if prompt.lower() != "help":
+                console.print(
+                    f"[yellow]{ai_name} is thinking...[/yellow]")
+                response = chat_with_gpt(prompt)
+                markdown = Markdown(response)
+                console.print(markdown)
+            else:
+                command_list = "[bold yellow]chgname[/bold yellow] - Change the name of your AI"
+                help_panel = Panel(
+                        f"{command_list}",
+                        title = 'Command Menu',
+                        border_style="bold cyan",
+                        title_align="center",
+                        expand=False)
+                console.print(help_panel)
 
         except KeyboardInterrupt:
             # CTRL C
