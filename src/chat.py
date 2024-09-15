@@ -1,24 +1,21 @@
 # chat.py
-import openai
+from g4f.client import Client
 from .functions import load_ai_name
 
 user = load_ai_name()
 
-openai.api_key = ""
-openai.api_base = "https://api.pawan.krd/cosmosrp/v1"
-
 AI_MODEL = "gpt-3.5-turbo"
 
-
 def chat_with_gpt(prompt):
+    client = Client()
     try:
-        response = openai.ChatCompletion.create(
+        response = client.chat.completions.create(
             model=AI_MODEL,
             messages=[{
                 "role": "user",
                 "content": prompt
             }],
         )
-        return response.choices[0].message["content"]
+        return response.choices[0].message.content
     except Exception as e:
         raise Exception(f"Error: {e}")
