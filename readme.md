@@ -1,4 +1,4 @@
-# Shellaii
+# Shelaii
 
 This is a terminal-based application made with Python that lets you interact with AI models in your console. The project uses a custom API by [@PawanOsman](https://github.com/PawanOsman/ChatGPT) to access their AI models, such as `cosmosrp-8k`, to respond to user queries.
 
