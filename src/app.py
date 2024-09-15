@@ -3,9 +3,9 @@ from rich.markdown import Markdown
 from rich.prompt import Prompt
 from rich.text import Text
 from rich.panel import Panel
-from chat import chat_with_gpt, AI_MODEL
-from cmds import *
-from functions import clear_screen, load_ai_name, save_ai_name
+from .chat import chat_with_gpt, AI_MODEL
+from .cmds import *
+from .functions import clear_screen, load_ai_name, save_ai_name
 
 console = Console()
 

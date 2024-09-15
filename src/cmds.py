@@ -1,4 +1,4 @@
-from functions import load_ai_name, save_ai_name
+from .functions import load_ai_name, save_ai_name
 from rich.console import Console
 
 console = Console()
