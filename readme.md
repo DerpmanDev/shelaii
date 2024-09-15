@@ -12,6 +12,14 @@ Shelaii is a terminal-based application made with Python that lets you interact 
 - **No API key required**: The Pawan API does not require an API key for access, allowing you to use their AI models without any limits.
 - **Rich terminal interface**: Shelaii enchances your terminal experience with visually appealing text formatting using the `rich` library.
 
+## Installation
+Make sure that Python3 is installed on your system.
+```bash
+git clone https://github.com/DerpmanDev/shelaii
+cd shelaii
+pip install -r requirements.txt
+python3 main.py
+```
 
 ## Credits
 [Pawan Discord Server](https://discord.gg/pawan)
