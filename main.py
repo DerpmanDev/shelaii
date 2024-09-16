@@ -1,8 +1,9 @@
 from src import app
 import asyncio
 
-if hasattr(asyncio, 'WindowsSelectorEventLoopPolicy'):
+if hasattr(asyncio, "WindowsSelectorEventLoopPolicy"):
     asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
+
 
 def main():
     app.main()
