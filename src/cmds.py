@@ -1,4 +1,3 @@
-import os
 import json
 from .functions import save_ai_name, json_path
 from rich.console import Console
@@ -18,10 +17,10 @@ def chgname(prompt):
 
 
 def chgmodel(type):
-    with open('src/data/ai-data.json', 'r') as file:
+    with open(json_path, 'r') as file:
         data = json.load(file)
         data["model-type"] = type
-    with open('src/data/ai-data.json', 'w') as file:
+    with open(json_path, 'w') as file:
         json.dump(data, file, indent=4)
 
     console.print(f"[bold cyan]Updated AI model to[/bold cyan] {type}")

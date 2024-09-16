@@ -1,5 +1,4 @@
 # chat.py
-import os
 import json
 from g4f.client import Client
 from .functions import load_ai_name, load_ai_model, json_path

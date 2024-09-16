@@ -5,7 +5,7 @@ from rich.text import Text
 from rich.panel import Panel
 from .chat import chat_with_gpt, AI_MODEL
 from .cmds import *
-from .functions import check_ai_data, clear_screen, load_ai_name, save_ai_name, json_path
+from .functions import clear_screen, load_ai_name, save_ai_name, json_path
 
 console = Console()
 
