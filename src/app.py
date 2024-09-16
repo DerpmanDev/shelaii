@@ -5,9 +5,12 @@ from rich.text import Text
 from rich.panel import Panel
 from .chat import chat_with_gpt, AI_MODEL
 from .cmds import *
-from .functions import clear_screen, load_ai_name, save_ai_name
+from .functions import check_ai_data, clear_screen, load_ai_name, save_ai_name, json_path
 
 console = Console()
+
+if AI_MODEL is None:
+    AI_MODEL = "gpt-3.5-turbo"
 
 
 def main():
@@ -59,13 +62,22 @@ def main():
                 chgname(prompt[8:].strip())
                 continue
 
+            if prompt.lower().startswith("chgmodel "):
+                chgmodel(prompt[9:].strip())
+                continue
+
             if prompt.lower() != "help":
+
+                with open(json_path, 'r') as file:
+                    data = json.load(file)
+                    ai_name = data["ai-name"]
+                    # Loading JSON everytime cause name var doesn't update if changed
                 console.print(f"[yellow]{ai_name} is thinking...[/yellow]")
                 response = chat_with_gpt(prompt)
                 markdown = Markdown(response)
                 console.print(markdown)
             else:
-                command_list = "[bold yellow]chgname[/bold yellow] - Change the name of your AI"
+                command_list = "[bold yellow]chgname[/bold yellow] - Change the name of your AI\n[bold yellow]chgmodel[/bold yellow] - Change your AI model"
                 help_panel = Panel(f"{command_list}",
                                    title='Command Menu',
                                    border_style="bold cyan",

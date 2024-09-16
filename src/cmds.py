@@ -1,15 +1,27 @@
-from .functions import load_ai_name, save_ai_name
+import os
+import json
+from .functions import save_ai_name, json_path
 from rich.console import Console
 
 console = Console()
 
 
 def chgname(prompt):
-  new_name = prompt
-  save_ai_name(new_name)
-  console.print(f'[blue]Updated name to[/blue] [yellow]"{new_name}!"[/yellow]')
+    new_name = prompt
+    save_ai_name(new_name)
+    console.print(
+        f'[blue]Updated name to[/blue] [yellow]"{new_name}!"[/yellow]')
 
-  ai_name = load_ai_name()
-  console.print(
-      f"[bold green]{ai_name}:[/bold green] [yellow]How can I help you today?[/yellow]"
-  )
+    console.print(
+        f"[bold green]{new_name}:[/bold green] [yellow]How can I help you today?[/yellow]"
+    )
+
+
+def chgmodel(type):
+    with open('src/data/ai-data.json', 'r') as file:
+        data = json.load(file)
+        data["model-type"] = type
+    with open('src/data/ai-data.json', 'w') as file:
+        json.dump(data, file, indent=4)
+
+    console.print(f"[bold cyan]Updated AI model to[/bold cyan] {type}")
